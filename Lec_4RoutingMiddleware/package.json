@@ -1,0 +1,15 @@
+{
+  "name": "lec_4",
+  "version": "1.0.0",
+  "main": "4_1script.js",
+  "scripts": {
+    "dev" : "nodemon 4_1script.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sneha Roy",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
