@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="w-full h-full bg-zinc-900">
+  <div class="text-white px-10 pt-4 pb-10">
+    <!-- <div class="nav mb-8">
+      <a class="text-yellow-100 text-xl hover:text-blue-300" href="/read">Read All Users</a>
+    </div> -->
+    <div class="flex  w-full justify-between item-center">
+      <h1 class="text-3xl border-b-4 border-white">Profile</h1>
+      <a class="text-xl font-bold bg-blue-500 hover:bg-pink-500 px-4 py-2 rounded-3xl " href="/feeds">Go To Feeds...</a>
+
+      <div class="flex gap-10">
+        <a class="text-xl font-bold bg-green-500 hover:bg-red-500 px-4 py-2  rounded-3xl " href="/deleteacc/<%= userData._id %>">Delete Account</a>
+
+        <a class="text-xl font-bold bg-yellow-500 hover:bg-red-500 px-4 py-2  rounded-3xl" href="/logout">Log Out...</a>
+      </div>
+    </div>
+
+    <div class="bg-zinc-800 w-[500px] p-8 rounded-lg inline-block mt-6 mb-10">
+
+      <p class="mb-4"><span class="text-2xl inline-block text-zinc-400 w-40">Name: </span> <span class="text-xl font-bold"><%= userData.name %></span>
+
+      <p class="mb-4"><span class="text-2xl inline-block text-zinc-400 w-40">Username: </span> <span class="text-xl font-bold"><%= userData.username %></span>
+  
+      <p><span class="text-2xl inline-block text-zinc-400 w-40">Age: </span> <span class="text-xl font-bold"><%= userData.age %></span>
+
+    </div>
+<br>
+
+    <h2 class="inline-block text-2xl mb-2 border-b-4 border-white">Create a new post ....</h2>
+
+    <form action="/post" method="post">
+      <textarea class="w-80 resize-none bg-zinc-800 border-4 border-zinc-700 outline-none rounded-lg p-3 mb-2" name="content" placeholder="What's on your mind ?" ></textarea>
+      <input type="submit" value="Create New Post" class="block  py-2 bg-blue-500 rounded-2xl hover:bg-green-700 cursor-pointer text-xl w-52">
+    </form>
+
+
+    <div class="posts">
+      <h2 class="text-3xl border-b-4 border-white inline-block mt-10 mb-2">Your Posts : </h2>
+      <div class="postContainer">
+
+        <% userData.posts.reverse().forEach(post => { %>
+          <div class="post mb-2 w-[500px] rounded-xl p-5 border-2 border-zinc-500">
+            <h4 class="text-blue-500 mb-3">@<%= userData.username %></h4>
+            <p><%= post.content %></p>
+
+            <p class="text-blue-500 font-bold  mt-4 "><%= post.likes.length %> Likes</p>
+  
+            <div class="btns flex justify-between mt-2">
+              <a class="text-blue-800 font-bold bg-white hover:bg-yellow-200 px-2 rounded-3xl" href="/like/<%= post._id %>"> <%= post.likes.indexOf(userData._id) ? "Like" : "Unlike" %>
+              </a>
+              <a class="text-green-800 font-bold bg-white hover:bg-yellow-200 px-2 rounded-3xl" href="/edit/<%= post._id %>">Edit</a>
+              <a class="text-red-600 font-bold bg-white hover:bg-yellow-200 px-2 rounded-3xl" href="/delete/<%= post._id %>">Delete</a>
+            </div>
+          </div>
+        <% }) %>
+
+
+
+
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>
