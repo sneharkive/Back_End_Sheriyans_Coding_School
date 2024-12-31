@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- <link rel="stylesheet" href="/stylesheets/style.css.css"> -->
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="w-full h-full bg-zinc-900">
+  <div class="text-white px-10 pt-4 pb-10">
+    <div class="nav mb-10 flex gap-12">
+      <a class="text-red-500 text-xl hover:text-blue-300" href="/">Back to Home...</a>
+      <a class="text-yellow-100 text-xl hover:text-blue-300" href="/read">Read All Users</a>
+    </div>
+    <h1 class="inline-block text-3xl mb-5 border-b-4 border-white">Account has been created!!</h1>
+    <div class="users flex gap-4 flex-wrap">
+
+        <div class="user w-72 p-4 bg-zinc-800 rounded-lg ">
+          <div class="w-full h-72 rounded-lg bg-zinc-400 overflow-hidden">
+            <img class="w-full h-52 object-cover" src="<%= user.image %>" alt="<%= user.name %>">
+          </div>
+          <h3 class="text-xl mt-3 "><%= user.name %></h3>
+          <h4 class="email text-zinc-400"><%= user.email %></h4>
+          <div class="flex justify-between mt-3">
+            <a class="bg-pink-200 p-1 rounded font-bold text-blue-700" href="/edit/<%= user._id %>">Edit User</a>
+            <a class="bg-yellow-200 p-1 rounded font-bold text-red-600" href="/delete/<%= user._id %>">Delete User</a>
+          </div>
+        </div>
+    </div>
+  </div>
+
+
+
+
+</body>
+</html>
